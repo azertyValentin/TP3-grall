@@ -18,7 +18,7 @@ public class LancementPortail {
 			ResourceConfig config = new ServicePortail();
 			HttpServer serveur1 = 
 					GrizzlyHttpServerFactory.createHttpServer(new URI(JAXRS.ADRESSE_PORTAIL), config);
-			System.out.println("* Serveur principal Grizzly dÃ©marrÃ© : " + serveur1.isStarted());
+			System.out.println("* Serveur principal Grizzly démarré : " + serveur1.isStarted());
 			System.out.println("** Adresse : " + JAXRS.ADRESSE_PORTAIL);
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
