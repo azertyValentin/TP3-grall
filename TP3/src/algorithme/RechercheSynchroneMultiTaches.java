@@ -40,9 +40,16 @@ public class RechercheSynchroneMultiTaches extends RechercheSynchroneAbstraite i
 		return ref.get();
 	}
 
+	private NomAlgorithme nom;
+	
+	public RechercheSynchroneMultiTaches(String str) {
+		super();
+		this.nom = new ImplemNomAlgorithme(str);
+	}
+
 	@Override
 	public NomAlgorithme nom() {
-		return new ImplemNomAlgorithme("recherche sync multi");
+		return nom;
 	}
 
 }

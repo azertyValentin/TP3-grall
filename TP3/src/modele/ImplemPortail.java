@@ -16,6 +16,15 @@ import javax.inject.Singleton;
 import javax.ws.rs.Path;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.container.AsyncResponse;
+
+import algorithme.RechercheAsynchroneMultiTaches;
+import algorithme.RechercheAsynchroneSequentielle;
+import algorithme.RechercheAsynchroneStreamParallele;
+import algorithme.RechercheAsynchroneStreamRx;
+import algorithme.RechercheSynchroneMultiTaches;
+import algorithme.RechercheSynchroneSequentielle;
+import algorithme.RechercheSynchroneStreamParallele;
+import algorithme.RechercheSynchroneStreamRx;
 import configuration.Initialisation;
 import configuration.JAXRS;
 import configuration.Orchestrateur;
@@ -33,9 +42,7 @@ public class ImplemPortail implements Portail {
 		this.client = Orchestrateur.clientJAXRS();
 		this.bibliotheques = Initialisation.bibliotheques();
 		this.tableAlgos = new ConcurrentHashMap<>();
-		this.algoRecherche = null;
-		/*
-		 		new RechercheSynchroneSequentielle("recherche sync seq");
+		this.algoRecherche = new RechercheSynchroneSequentielle("recherche sync seq");
 		
 		AlgorithmeRecherche algo = this.algoRecherche;
 		NomAlgorithme nom = this.algoRecherche.nom();
@@ -61,7 +68,7 @@ public class ImplemPortail implements Portail {
 		algo = new RechercheAsynchroneStreamRx("recherche async stream rx");
 		nom = algo.nom();
 		tableAlgos.put(nom, algo);
-		*/
+	
 	}
 
 	@Override

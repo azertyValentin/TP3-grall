@@ -4,10 +4,10 @@
 	@Produces(TYPE_MEDIA)
 	@Consumes(TYPE_MEDIA)
 	@ReponsesPUTOption
-	// Requête (méthode http + url) : PUT sur BIBLIO/CHEMIN_BIBLIO
-	// Corps : 
-	// Réponses (à spécifier par code) :
-	// - code : 
+	// Requête (méthode http + url) : PUT sur http://BIBLIO/CHEMIN_BIBLIO
+	// Corps : Livre
+	// Réponses (à spécifier par code) : 
+	// - code : 404 ou 200
 	Optional<HyperLien<Livre>> chercher(Livre l);
 
 
@@ -16,18 +16,18 @@
 	@Path(JAXRS.SOUSCHEMIN_ASYNC)
 	@Consumes(JAXRS.TYPE_MEDIA)
 	@Produces(JAXRS.TYPE_MEDIA)
-	// Requête (méthode http + url) : 
-	// Corps : 
-	// Réponses (à spécifier par code) :
+	// Requête (méthode http + url) : PUT sur http://BIBLIO/CHEMIN_BIBLIO/async 
+	// Corps : Livre
+	// Réponses (à spécifier par code) : 404 ou 200
 	// - code : 
 	Future<Optional<HyperLien<Livre>>> chercherAsynchrone(Livre l, @Suspended final AsyncResponse ar);
 
 	@GET
 	@Path(SOUSCHEMIN_CATALOGUE)
 	@Produces(TYPE_MEDIA)
-	// Requête (méthode http + url) : 
-	// Corps : 
-	// Réponses (à spécifier par code) :
+	// Requête (méthode http + url) : GET sur http://BIBLIO/CHEMIN_BIBLIO/catalogue 
+	// Corps : vide
+	// Réponses (à spécifier par code) : 404 ou 200
 	// - code : 
 	HyperLiens<Livre> repertorier();
 
@@ -45,9 +45,9 @@
 	@GET 
 	@Produces(JAXRS.TYPE_MEDIA)
 	@ReponsesGETNullEn404
-	// Requête (méthode http + url) : 
-	// Corps : 
-	// Réponses (à spécifier par code) :
+	// Requête (méthode http + url) : http://BIBLIO/CHEMIN_BIBLIO/{id}
+	// Corps : id livre
+	// Réponses (à spécifier par code) : 404 ou 200
 	// - code : 
 	Livre getRepresentation(@PathParam("id") IdentifiantLivre id);
 
@@ -55,10 +55,10 @@
 	@ReponsesPOSTEnCreated
 	@Consumes(JAXRS.TYPE_MEDIA)
 	@Produces(JAXRS.TYPE_MEDIA)
-	// Requête (méthode http + url) : 
-	// Corps : 
+	// Requête (méthode http + url) : http://BIBLIO/CHEMIN_BIBLIO
+	// Corps : Livre
 	// Réponses (à spécifier par code) :
-	// - code : 
+	// - code : 201
 	HyperLien<Livre> ajouter(Livre l);
 }
 
@@ -105,6 +105,25 @@ Livre:
   </xs:sequence>
 </xs:complexType>
 </xs:schema>
+
+
+Résultats:
+
+recherche sync seq: 7698 ms
+
+recherche sync multi: 1552 ms
+
+recherche sync stream 8: 1528 ms
+
+recherche sync stream rx: 1511 ms
+
+recherche async seq: 7557 ms
+
+recherche async multi: 1532 ms
+
+recherche async stream 8: 1555 ms
+
+recherche async stream rx: 1509 ms
 
 
 

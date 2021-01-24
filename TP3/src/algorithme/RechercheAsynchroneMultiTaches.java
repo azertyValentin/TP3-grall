@@ -48,9 +48,16 @@ public class RechercheAsynchroneMultiTaches extends RechercheAsynchroneAbstraite
 		return ref.get();
 	}
 
+	private NomAlgorithme nom;
+	
+	public RechercheAsynchroneMultiTaches(String str) {
+		super();
+		this.nom = new ImplemNomAlgorithme(str);
+	}
+
 	@Override
 	public NomAlgorithme nom() {
-		return new ImplemNomAlgorithme("recherche async multi");
+		return nom;
 	}
 
 }

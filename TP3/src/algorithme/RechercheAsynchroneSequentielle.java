@@ -36,9 +36,16 @@ public class RechercheAsynchroneSequentielle extends RechercheAsynchroneAbstrait
 		return Optional.empty();
 	}
 
+	private NomAlgorithme nom;
+	
+	public RechercheAsynchroneSequentielle(String str) {
+		super();
+		this.nom = new ImplemNomAlgorithme(str);
+	}
+
 	@Override
 	public NomAlgorithme nom() {
-		return new ImplemNomAlgorithme("recherche async seq");
+		return nom;
 	}
 
 }

@@ -26,9 +26,16 @@ public class RechercheAsynchroneStreamRx extends RechercheAsynchroneAbstraite im
 				.blockingFirst(Optional.empty());
 	}
 
+	private NomAlgorithme nom;
+	
+	public RechercheAsynchroneStreamRx(String str) {
+		super();
+		this.nom = new ImplemNomAlgorithme(str);
+	}
+
 	@Override
 	public NomAlgorithme nom() {
-		return new ImplemNomAlgorithme("recherche async stream rx");
+		return nom;
 	}
 
 }

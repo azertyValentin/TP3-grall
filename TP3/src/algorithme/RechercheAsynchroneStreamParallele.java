@@ -25,10 +25,17 @@ public class RechercheAsynchroneStreamParallele extends RechercheAsynchroneAbstr
 				.findAny()
 				.orElse(Optional.empty());
 	}
+	
+	private NomAlgorithme nom;
+	
+	public RechercheAsynchroneStreamParallele(String str) {
+		super();
+		this.nom = new ImplemNomAlgorithme(str);
+	}
 
 	@Override
 	public NomAlgorithme nom() {
-		return new ImplemNomAlgorithme("recherche async stream 8");
+		return nom;
 	}
 
 }

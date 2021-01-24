@@ -29,6 +29,7 @@ public class RechercheSynchroneSequentielle extends RechercheSynchroneAbstraite 
 	private NomAlgorithme nom;
 	
 	public RechercheSynchroneSequentielle(String str) {
+		super();
 		this.nom = new ImplemNomAlgorithme(str);
 	}
 

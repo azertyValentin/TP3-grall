@@ -23,9 +23,16 @@ public class RechercheSynchroneStreamParallele extends RechercheSynchroneAbstrai
 		.orElse(Optional.empty());
 	}
 
+private NomAlgorithme nom;
+	
+	public RechercheSynchroneStreamParallele(String str) {
+		super();
+		this.nom = new ImplemNomAlgorithme(str);
+	}
+
 	@Override
 	public NomAlgorithme nom() {
-		return new ImplemNomAlgorithme("recherche sync stream 8");
+		return nom;
 	}
 
 }

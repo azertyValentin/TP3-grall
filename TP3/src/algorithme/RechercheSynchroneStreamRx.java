@@ -26,9 +26,16 @@ public class RechercheSynchroneStreamRx extends RechercheSynchroneAbstraite impl
 				.blockingFirst(Optional.empty());
 	}
 
+	private NomAlgorithme nom;
+	
+	public RechercheSynchroneStreamRx(String str) {
+		super();
+		this.nom = new ImplemNomAlgorithme(str);
+	}
+
 	@Override
 	public NomAlgorithme nom() {
-		return new ImplemNomAlgorithme("recherche sync stream rx");
+		return nom;
 	}
 
 }
