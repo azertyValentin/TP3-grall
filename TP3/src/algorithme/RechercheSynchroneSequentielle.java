@@ -24,10 +24,17 @@ public class RechercheSynchroneSequentielle extends RechercheSynchroneAbstraite 
 		}
 		return Optional.empty();
 	}
+	
+	
+	private NomAlgorithme nom;
+	
+	public RechercheSynchroneSequentielle(String str) {
+		this.nom = new ImplemNomAlgorithme(str);
+	}
 
 	@Override
 	public NomAlgorithme nom() {
-		return new ImplemNomAlgorithme("recherche sync seq");
+		return nom;
 	}
 
 }
