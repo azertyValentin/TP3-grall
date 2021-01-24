@@ -109,6 +109,8 @@ Livre:
 
 Résultats:
 
+Le client se trouve dans src/client/ClientRecherche
+
 recherche sync seq: 7698 ms
 
 recherche sync multi: 1552 ms
